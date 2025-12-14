@@ -1,0 +1,20 @@
+{
+    "short_name": "N-BREAD",
+    "name": "N-BREAD (엔빵) - 간편 더치페이 계산기",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+        },
+        {
+            "src": "og-image.png",
+            "type": "image/png",
+            "sizes": "1200x630"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff"
+}

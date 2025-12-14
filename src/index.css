@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .zigzag-border-top {
+    /* Implementation for zigzag border using masks or background */
+    /* Will be handled in component or extended theme */
+  }
+}
+
+body {
+  background-color: #f3f4f6; /* gray-100 */
+}

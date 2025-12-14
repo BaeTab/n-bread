@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Main shape (Bread Loaf) -->
+  <path fill="#e3a759" stroke="#8B4513" stroke-width="20" d="M100 200 C100 50 412 50 412 200 V400 C412 450 380 480 330 480 H182 C132 480 100 450 100 400 Z" />
+  
+  <!-- Highlight/Inner shading for 3D feel -->
+  <path fill="#f4d08c" d="M130 210 C130 100 382 100 382 210 V390 C382 420 360 440 330 440 H182 C152 440 130 420 130 390 Z" />
+
+  <!-- Cute Face -->
+  <circle cx="200" cy="300" r="25" fill="#583101"/>
+  <circle cx="312" cy="300" r="25" fill="#583101"/>
+  
+  <path d="M230 350 Q256 380 282 350" stroke="#583101" stroke-width="20" stroke-linecap="round" fill="none"/>
+
+  <!-- Cheeks -->
+  <circle cx="170" cy="330" r="20" fill="#ffb5b5" opacity="0.6"/>
+  <circle cx="342" cy="330" r="20" fill="#ffb5b5" opacity="0.6"/>
+</svg>
