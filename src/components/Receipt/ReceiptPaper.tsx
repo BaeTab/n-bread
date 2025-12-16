@@ -9,7 +9,7 @@ import { analytics } from '../../firebase';
 import { logEvent } from "firebase/analytics";
 
 export default function ReceiptPaper() {
-    const { menuItems, members, roundingUnit, roundingMethod, bankName, accountNumber, accountHolder, theme } = useCalculatorStore();
+    const { menuItems, members, roundingUnit, roundingMethod, bankName, accountNumber, accountHolder, theme, isAdUnlocked, unlockAd } = useCalculatorStore();
     const receiptRef = useRef<HTMLDivElement>(null);
     const [showConfetti, setShowConfetti] = useState(false);
 
@@ -106,20 +106,58 @@ export default function ReceiptPaper() {
     const dashedBorder = theme === 'blueprint' ? 'border-dashed border-white/40' : 'border-dashed border-gray-400';
 
     return (
-        <div className="flex flex-col items-center gap-6 w-full max-w-md">
+        <div className="flex flex-col items-center gap-6 w-full max-w-md relative">
             {showConfetti && <Confetti recycle={false} numberOfPieces={300} />}
+
+            {/* Ad Lock Overlay */}
+            {!isAdUnlocked && (
+                <div className="absolute inset-0 z-50 flex flex-col items-center justify-center p-6 text-center backdrop-blur-md bg-white/30 rounded-xl border border-white/50 shadow-lg">
+                    <div className="bg-white/90 p-8 rounded-2xl shadow-xl border border-gray-100 max-w-sm w-full space-y-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-2 text-white shadow-lg animate-pulse">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900">결과 잠금 해제</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                            아래 링크를 클릭해서 광고를 확인해주시면<br />
+                            <span className="font-semibold text-indigo-600">상세 영수증 결과</span>가 보입니다!
+                        </p>
+                        <a
+                            href="https://deg.kr/799c1ba"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => {
+                                // Unlock after short delay to ensure click is registered
+                                setTimeout(() => unlockAd(), 500);
+                            }}
+                            className="block w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition-all transform hover:scale-[1.02] shadow-md hover:shadow-lg text-sm"
+                        >
+                            광고 보고 결과 확인하기 &rarr;
+                        </a>
+                        <p className="text-xs text-gray-400 mt-2">
+                            * 한 번만 클릭하면 계속 이용 가능합니다.
+                        </p>
+                    </div>
+                </div>
+            )}
 
             <button
                 onClick={handleDownload}
-                className="group flex items-center gap-2 bg-gradient-to-r from-gray-900 to-gray-700 text-white px-8 py-3 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all font-bold z-10"
+                disabled={!isAdUnlocked}
+                className={clsx(
+                    "group flex items-center gap-2 px-8 py-3 rounded-full shadow-xl transition-all font-bold z-10",
+                    isAdUnlocked
+                        ? "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:shadow-2xl hover:scale-105 cursor-pointer"
+                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                )}
             >
-                <Download size={20} className="group-hover:animate-bounce" />
+                <Download size={20} className={clsx(isAdUnlocked && "group-hover:animate-bounce")} />
                 영수증 저장하기
             </button>
 
             {/* Receipt Container */}
             {/* Use padding for drop shadow wrapper */}
-            <div className="p-4 rounded-xl relative">
+            {/* If locked, blur the receipt a bit */}
+            <div className={clsx("p-4 rounded-xl relative transition-all duration-500", !isAdUnlocked && "blur-[8px] opacity-60 select-none grayscale-[0.5]")}>
                 {/* The main receipt */}
                 <div
                     ref={receiptRef}

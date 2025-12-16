@@ -45,6 +45,9 @@ interface CalculatorState {
     setTheme: (theme: Theme) => void;
 
     reset: () => void;
+
+    isAdUnlocked: boolean;
+    unlockAd: () => void;
 }
 
 export const useCalculatorStore = create<CalculatorState>()(
@@ -99,7 +102,10 @@ export const useCalculatorStore = create<CalculatorState>()(
                 bankName: '',
                 accountNumber: '',
                 accountHolder: '',
-            })
+            }),
+
+            isAdUnlocked: false,
+            unlockAd: () => set({ isAdUnlocked: true }),
         }),
         {
             name: 'dutch-pay-storage',
