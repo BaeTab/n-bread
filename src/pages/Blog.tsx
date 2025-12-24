@@ -1,11 +1,17 @@
-
 import { Link } from 'react-router-dom';
 import { posts } from '../data/posts';
 import { Calendar, Tag, ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Blog() {
     return (
         <div className="max-w-4xl mx-auto py-12 px-6">
+            <SEO
+                title="블로그 - 더치페이 꿀팁 & 이야기"
+                description="모임 정산 노하우, 더치페이 에티켓, 금융 팁 등 다양한 이야기를 전해드립니다."
+                keywords="더치페이 블로그, 정산 팁, 모임 에티켓, 금융 상식"
+                url="/blog"
+            />
             <div className="text-center mb-16">
                 <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">블로그</h1>
                 <p className="text-lg text-gray-600">더치페이 꿀팁과 다양한 이야기</p>

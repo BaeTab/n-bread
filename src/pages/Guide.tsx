@@ -1,10 +1,16 @@
-
 import { CheckCircle, Smartphone, Share2, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function Guide() {
     return (
         <div className="max-w-4xl mx-auto py-12 px-6">
+            <SEO
+                title="N-BREAD 사용 가이드 - 30초면 마스터하는 더치페이"
+                description="복잡한 모임 정산, N-BREAD로 쉽고 빠르게 해결하는 방법을 알려드립니다. 참여자 등록부터 영수증 공유까지 단계별 가이드."
+                keywords="더치페이 방법, 정산 가이드, N-BREAD 사용법, 모임 정산 꿀팁"
+                url="/guide"
+            />
             <div className="text-center mb-16">
                 <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">📖 N-BREAD 사용 가이드</h1>
                 <p className="text-lg text-gray-600">누구나 30초면 마스터하는 가장 쉬운 더치페이 정산법</p>

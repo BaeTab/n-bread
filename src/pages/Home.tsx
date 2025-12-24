@@ -2,10 +2,30 @@
 import { Link } from 'react-router-dom';
 import { Calculator, BookOpen, FileText, ChevronRight } from 'lucide-react';
 import SeoContent from '../components/Footer/SeoContent';
+import SEO from '../components/SEO';
 
 export default function Home() {
     return (
         <div className="min-h-screen bg-gray-50/50">
+            <SEO
+                title="무료 더치페이 계산기 & 영수증 이미지 생성"
+                description="복잡한 모임 정산, N-BREAD(엔빵)로 1/N 계산하고 감성 영수증 이미지를 만들어 공유하세요. 앱 설치 없이 바로 사용하는 가장 쉬운 정산 도구."
+                keywords="더치페이, 더치페이 계산기, 엔빵, 영수증 만들기, 정산 계산기, 모임 정산, 여행 경비, 회식비 계산"
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "N-BREAD",
+                    "applicationCategory": "FinanceApplication",
+                    "operatingSystem": "Web",
+                    "url": "https://n-bread-n.web.app",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "KRW"
+                    },
+                    "description": "복잡한 모임 정산을 간편하게 해결해주는 무료 온라인 도구입니다."
+                }}
+            />
             {/* Hero Section */}
             <section className="bg-white border-b border-gray-100 py-20 px-6">
                 <div className="max-w-4xl mx-auto text-center space-y-6">

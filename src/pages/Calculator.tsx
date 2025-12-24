@@ -130,6 +130,8 @@ function ConfigPanel() {
     )
 }
 
+import SEO from '../components/SEO';
+
 export default function Calculator() {
     useEffect(() => {
         logEvent(analytics, 'page_view_calculator');
@@ -137,6 +139,12 @@ export default function Calculator() {
 
     return (
         <div className="max-w-7xl mx-auto p-4 md:p-8">
+            <SEO
+                title="1/N 정산 계산기 - 더치페이 & 영수증 생성"
+                description="누가 얼마를 내야할지 자동으로 계산해줍니다. 메뉴별 개별 계산, 10원 단위 절사, 계좌번호 QR코드 생성 기능 제공."
+                keywords="더치페이 계산, 1/N 계산기, 영수증 캡쳐, 정산 공유, 총무 꿀팁, 엔빵 계산기"
+                url="/calculator"
+            />
             <div className="flex flex-col lg:flex-row gap-6">
                 {/* Left Column: Controls */}
                 <div className="w-full lg:w-[480px] xl:w-[520px] flex flex-col gap-6 order-2 lg:order-1">

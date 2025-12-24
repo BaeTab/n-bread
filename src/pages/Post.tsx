@@ -1,8 +1,8 @@
-
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { posts } from '../data/posts';
 import { Calendar, ArrowLeft, Tag } from 'lucide-react';
 import SeoContent from '../components/Footer/SeoContent';
+import SEO from '../components/SEO';
 
 export default function Post() {
     const { id } = useParams();
@@ -14,6 +14,23 @@ export default function Post() {
 
     return (
         <div className="min-h-screen bg-gray-50/50 pb-20">
+            <SEO
+                title={post.title}
+                description={post.excerpt}
+                keywords={`더치페이, ${post.category}, N-BREAD 블로그`}
+                url={`/blog/${post.id}`}
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "BlogPosting",
+                    "headline": post.title,
+                    "description": post.excerpt,
+                    "datePublished": post.date,
+                    "author": {
+                        "@type": "Person",
+                        "name": "N-BREAD Team"
+                    }
+                }}
+            />
             <div className="max-w-3xl mx-auto pt-12 px-6">
                 <Link to="/blog" className="inline-flex items-center text-gray-500 hover:text-gray-900 mb-8 font-medium">
                     <ArrowLeft size={18} className="mr-2" /> 목록으로 돌아가기
