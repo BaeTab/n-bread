@@ -46,8 +46,6 @@ interface CalculatorState {
 
     reset: () => void;
 
-    isAdUnlocked: boolean;
-    unlockAd: () => void;
 }
 
 export const useCalculatorStore = create<CalculatorState>()(
@@ -104,8 +102,6 @@ export const useCalculatorStore = create<CalculatorState>()(
                 accountHolder: '',
             }),
 
-            isAdUnlocked: false,
-            unlockAd: () => set({ isAdUnlocked: true }),
         }),
         {
             name: 'dutch-pay-storage',
