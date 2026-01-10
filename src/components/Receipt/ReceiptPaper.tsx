@@ -122,7 +122,7 @@ export default function ReceiptPaper() {
                             <span className="font-semibold text-indigo-600">상세 영수증 결과</span>가 보입니다!
                         </p>
                         <a
-                            href="https://deg.kr/799c1ba"
+                            href="https://bitl.kr/AhVGsz"
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => {
