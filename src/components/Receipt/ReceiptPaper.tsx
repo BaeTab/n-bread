@@ -9,7 +9,7 @@ import { analytics } from '../../firebase';
 import { logEvent } from "firebase/analytics";
 
 export default function ReceiptPaper() {
-    const { menuItems, members, roundingUnit, roundingMethod, bankName, accountNumber, accountHolder, theme, isAdUnlocked, unlockAd } = useCalculatorStore();
+    const { menuItems, members, roundingUnit, roundingMethod, bankName, accountNumber, accountHolder, theme } = useCalculatorStore();
     const receiptRef = useRef<HTMLDivElement>(null);
     const [showConfetti, setShowConfetti] = useState(false);
 
@@ -122,7 +122,7 @@ export default function ReceiptPaper() {
                             <span className="font-semibold text-indigo-600">상세 영수증 결과</span>가 보입니다!
                         </p>
                         <a
-                            href="https://bitl.kr/AhVGsz"
+                            href="https://deg.kr/799c1ba"
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => {
@@ -142,22 +142,19 @@ export default function ReceiptPaper() {
 
             <button
                 onClick={handleDownload}
-                disabled={!isAdUnlocked}
                 className={clsx(
                     "group flex items-center gap-2 px-8 py-3 rounded-full shadow-xl transition-all font-bold z-10",
-                    isAdUnlocked
-                        ? "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:shadow-2xl hover:scale-105 cursor-pointer"
-                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    "bg-gradient-to-r from-gray-900 to-gray-700 text-white hover:shadow-2xl hover:scale-105 cursor-pointer"
                 )}
             >
-                <Download size={20} className={clsx(isAdUnlocked && "group-hover:animate-bounce")} />
+                <Download size={20} className="group-hover:animate-bounce" />
                 영수증 저장하기
             </button>
 
             {/* Receipt Container */}
             {/* Use padding for drop shadow wrapper */}
             {/* If locked, blur the receipt a bit */}
-            <div className={clsx("p-4 rounded-xl relative transition-all duration-500", !isAdUnlocked && "blur-[8px] opacity-60 select-none grayscale-[0.5]")}>
+            <div className="p-4 rounded-xl relative transition-all duration-500">
                 {/* The main receipt */}
                 <div
                     ref={receiptRef}
@@ -239,7 +236,7 @@ export default function ReceiptPaper() {
                             {accountNumber ? (
                                 <div className="text-center w-full">
                                     <div className="uppercase text-[10px] tracking-widest mb-3 opacity-60">Bank Account</div>
-                                    <div className="bg-white/10 p-4 rounded-lg border border-current/20 w-FULL">
+                                    <div className="bg-white/10 p-4 rounded-lg border border-current/20 w-full">
                                         <div className="text-lg font-bold mb-1 opacity-90">{bankName}</div>
                                         <div className="text-xl font-mono font-black mb-2 tracking-wider break-all leading-none">{accountNumber}</div>
                                         <div className="text-sm opacity-80 mt-1 flex justify-center items-center gap-1">
